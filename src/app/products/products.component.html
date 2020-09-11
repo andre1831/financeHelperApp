@@ -1,0 +1,98 @@
+
+<div class="jumbotron" style="background-color: #fff; height: calc(95vh);">
+	<div style="align-items: center; width: 60%; margin-left: 20%;">
+		<form [formGroup]="form" class="text-center border border-light p-5">
+
+			<div class="form__group--body row">
+				<div class="col-12 col-md-6">
+					<label for="product" class="form_group--label">
+						Elige el producto sobre el que quieras información
+					</label>
+			</div>
+			
+			<div>
+				<select formControlName="product"  name="product" placeholder="Select Store" class="custom-select mr-sm-2">
+					<option [ngValue]="null">selecciona producto</option>
+					<option *ngFor="let product of products" [ngValue]="product.symbol"[selected]=null>{{ product.symbol }}</option>
+				</select>
+					
+				</div>
+
+			</div>
+		
+		</form>
+	</div>
+
+	<div  *ngIf="!showTable" style="align-items: center; width: 60%; margin-left: 20%;"> 
+
+		<table class="table table-bordered">
+		<tr>
+			<td>Simbolo</td>
+			<td >serie única de letras asignadas a un producto bursatil</td>
+		</tr>
+		<tr>
+			<td>Precio</td>
+			<td >precio actual al que se ofrece una acción en el mercado </td>
+		</tr>
+		<tr>
+			<td>Volume</td>
+			<td>cantidad de activos negociados durante un periodo de tiempo</td>
+		</tr>
+		<tr>
+			<td>Precio de Apertura</td>
+			<td >precio por el cual cotiza un activo financiero al momento de apertura de la bolsa</td>
+		</tr>
+		<tr>
+			<td>Precio de Cierre</td>
+			<td >precio por el cual cerro un valor en el periodo(día) anterior</td>
+		</tr>
+		<tr>
+			<td>precio más alto</td>
+			<td >precio más alto con e que se ha negociado un activo en el transcurso del día</td>
+		</tr>
+		<tr>
+			<td>precio más bajo</td>
+			<td >precio más bajo con e que se ha negociado un activo en el transcurso del día</td>
+		</tr>
+		
+		</table>
+		
+	</div>
+				
+
+	<div  *ngIf="showTable" style="align-items: center; width: 60%; margin-left: 20%;"> 
+
+		<table class="table table-bordered">
+		<tr>
+			<td>Simbolo</td>
+			<td>{{productInfo.symbol}}</td>
+		</tr>
+		<tr>
+			<td>Precio</td>
+			<td>{{productInfo.price}}</td>
+		</tr>
+		<tr>
+			<td>Volume</td>
+			<td>{{productInfo.volume}}</td>
+		</tr>
+		<tr>
+			<td>Precio de Apertura</td>
+			<td>{{productInfo.open}}</td>
+		</tr>
+		<tr>
+			<td>Precio de Cierre</td>
+			<td>{{productInfo.previousClose}}</td>
+		</tr>
+		<tr>
+			<td>precio más alto</td>
+			<td>{{productInfo.high}}</td>
+		</tr>
+		<tr>
+			<td>precio más bajo</td>
+			<td>{{productInfo.low}}</td>
+		</tr>
+		
+		</table>
+		
+	</div>
+</div>

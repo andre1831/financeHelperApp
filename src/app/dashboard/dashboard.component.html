@@ -1,0 +1,44 @@
+
+<div class="jumbotron" style="background-color: #fff; height: calc(95vh);">
+  <form [formGroup]="form" (submit)="addProduct()" >
+      
+      <div class="row" style="margin-top: 5%; margin-bottom: 3%;">
+        <div>
+          <select formControlName="product"  name="product" placeholder="Select Store" class="custom-select mr-sm-2">
+              <option [ngValue]="null">selecciona producto</option>
+              <option *ngFor="let product of products" [ngValue]="product"[selected]=null>{{ product.symbol }}</option>
+            </select>
+              
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      
+  </form>
+
+  
+  <table class="table" *ngIf="showTable">
+      <thead class="thead-dark">
+        <tr>           
+          <th> Simbolo </th>
+        
+       
+          <th> Precio de Mercado </th>
+               
+          <th> Precio cierre anterior </th>
+                
+          <th> Eliminar </th>
+        </tr>
+      <tbody>
+        <tr *ngFor="let item of followedProducts" (dblclick)="getProduct(item)">           
+          <td >{{item.userProduct.product.symbol}}</td>
+              
+          <td >{{item.globalQuote.price}}</td>
+                
+          <td >{{item.globalQuote.previousClose}}</td>
+                 
+          <td ><a (click)="deleteProduct(item)"><img src="assets/images/delete-symbol.jpg" width="20" height="30"></a></td>
+        </tr> 
+      </tbody>
+  </table>
+
+</div>

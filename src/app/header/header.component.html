@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Finance Helper</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+  
+        <li class="nav-item" *ngIf="(authenticated | async)">
+          <a class="nav-link" routerLink="/products">Información Productos</a>
+        </li>
+        <li class="nav-item" *ngIf="(authenticated | async)">
+          <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+        </li>
+      </ul>
+      <div class="nav-item" *ngIf="(authenticated | async)">
+        <a  class="nav-link"  role="button" (click)="logout()">Log out</a>
+      </div>
+      <div *ngIf="!(authenticated | async)" class="ogin-container">
+        <app-login></app-login>
+      </div>
+    </div>
+  </nav>

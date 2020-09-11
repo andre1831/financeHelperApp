@@ -1,0 +1,114 @@
+<div class="jumbotron" style="background-color: #fff; height: calc(95vh);">
+    
+        <h1 style="text-align:center; margin-top: 30px; margin-bottom: 30px;">{{followedProduct.userProduct.product.symbol}}</h1>
+        <div class="row" >
+        <div    class="col-12 col-md-6" style="width: 40%; "> 
+
+            <table class="table borderless">
+            <tr>
+                <td>Simbolo</td>
+                <td>{{followedProduct.globalQuote.symbol}}</td>
+            </tr>
+            <tr>
+                <td>Precio</td>
+                <td>{{followedProduct.globalQuote.price}}</td>
+            </tr>
+            <tr>
+                <td>Volume</td>
+                <td>{{followedProduct.globalQuote.volume}}</td>
+            </tr>
+            <tr>
+                <td>Precio de Apertura</td>
+                <td>{{followedProduct.globalQuote.open}}</td>
+            </tr>
+            <tr>
+                <td>Precio de Cierre</td>
+                <td>{{followedProduct.globalQuote.previousClose}}</td>
+            </tr>
+            <tr>
+                <td>precio más alto</td>
+                <td>{{followedProduct.globalQuote.high}}</td>
+            </tr>
+            <tr>
+                <td>precio más bajo</td>
+                <td>{{followedProduct.globalQuote.low}}</td>
+            </tr>
+            
+            </table>
+            
+        </div>
+
+        <div class=" col-12 col-md-6">
+            <fusioncharts
+                [type]="type"
+                [width]="width"
+                [height]="height"
+                [dataSource]="dataSource"
+            ></fusioncharts>
+            </div>
+        </div>
+        <table class="table" *ngIf="showTable">
+            <thead class="thead-dark">
+              <tr>           
+                <th> Atributo </th>
+              
+                <th> Maximo </th>
+                     
+                <th> Minimo </th>
+                      
+                <th> Eliminar </th>
+              </tr>
+            <tbody>
+              <tr *ngFor="let item of alarms">           
+                <td >{{item.attribute.name}}</td>
+                    
+                <td >{{item.maxval}}</td>
+                      
+                <td >{{item.minval}}</td>
+                       
+                <td ><a (click)="deleteAlarm(item)"><img src="assets/images/delete-symbol.jpg" width="20" height="30"></a></td>
+              </tr> 
+            </tbody>
+        </table>
+        <button (click)="showForm=true;" class="btn btn-primary">add Alarm</button>
+    <div *ngIf="showForm">
+        <form [formGroup]="form" (ngSubmit)="createAlarm()">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <label for="attribute">
+                         Atributo:
+                    </label>
+              </div>
+            
+              <div>
+                <select  formControlName="attribute" name="attribute" placeholder="Seleccione atributo">
+                    <option [ngValue]="null">Selecciona atributo</option>
+                    <option *ngFor="let attribute of attributes" [ngValue]="attribute"[selected]=null>{{ attribute.name }}</option>
+                  </select>
+                    
+                </div>
+        
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <label for="maxVal" class="form__group--label">MaxVal: </label>
+                </div>
+                <div >
+                    <input type="number" formControlName="maxVal" id="maxVal" placeholder="125,3"  tabindex="1">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <label for="minVal" class="form__group--label">Min Val: </label>
+                </div>
+                <div >
+                    <input type="number" formControlName="minVal" id="minVal" placeholder="125,3"  tabindex="1">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  
+</div>
+

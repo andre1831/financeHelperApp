@@ -1,0 +1,156 @@
+
+<div class="jumbotron" style="background-color: #fff; height: calc(95vh);">
+    
+        <h1 class="register__title">Bienvenido a Finance Helper</h1>
+    
+    <form [formGroup]="form" (ngSubmit)="submitForm()" class="text-center border border-light p-5">
+        <div class="row">
+            <div class="form-group  col-12 col-md-6">
+                <div>
+                    <label for="name" class="form__group--label">Nombre: </label>
+                </div>
+                <div >
+                    <input type="text" formControlName="name" id="name" placeholder="Ej. Daniel Arenas"  tabindex="1" class="form-control form__group--input">
+                </div>
+                <div class="form__group--footer">
+                    <ng-container *ngTemplateOutlet="inputErrorMessage; context: {controlName: 'name'}"></ng-container>
+                  </div>
+            </div>
+            
+            <div class="form-group  col-12 col-md-6">
+                <div>
+                    <label for="birthdate" class="form__group--label">Fecha de Nacimiento: </label>
+                </div>
+                <div >
+                    <input type="date" formControlName="birthdate" id="birthdate" tabindex="2" class="form-control form__group--input">
+                </div>
+                <div class="form__group--footer">
+                    <ng-container *ngTemplateOutlet="inputErrorMessage; context: {controlName: 'birthdate'}"></ng-container>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <div>
+                    <label for="gender" class="form__group--label">Género: </label>
+                </div>
+
+
+                <div class="form__group--body row">
+                    <div class="col-6 col-md-2">
+                      <div class="radio__primary">
+                        <input type="radio" formControlName="gender" [value]="{id:1}" name="gender" id="female" tabindex="3" class="radio__button">
+                        <label for="1" class="form__group--label">
+                            Femenino
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <div class="radio__primary">
+                        <input type="radio" formControlName="gender" [value]="{id:2}" name="gender" id="male" tabindex="4" class="radio__button">
+                        <label for="2" class="form__group--label">
+                            Masculino
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form__group--footer">
+                    <ng-container *ngTemplateOutlet="inputErrorMessage; context: {controlName: 'gender'}"></ng-container>
+                  </div>
+            </div>
+
+            <div class="form-group col-12 col-md-6">
+                <div>
+                    <label for="country" class="form__group--label">
+                        ¿En que país vives?
+                    </label>
+                 </div>
+            
+                <div>
+                    <select formControlName="country"  name="country" placeholder="Select Store" class="custom-select mr-sm-2">
+                        <option [ngValue]="null">Selecciona tu país de residencia</option>
+                        <option *ngFor="let country of countries" [ngValue]="country"[selected]=null>{{ country.name }}</option>
+                    </select>
+                    
+                </div>
+                <div class="form__group--footer">
+                    <ng-container *ngTemplateOutlet="inputErrorMessage; context: {controlName: 'country'}"></ng-container>
+                </div>
+            </div>
+            
+            <div class="form-group col-12 col-md-6">
+                <div>
+                    <label for="city" class="form__group--label">
+                        ¿En que ciudad vives?
+                    </label>
+                </div>
+            
+                 <div>
+                    <select  formControlName="city" name="city" placeholder="Select Store" class="custom-select mr-sm-2">
+                        <option [ngValue]="null">Selecciona tu ciudad de residencia</option>
+                        <option *ngFor="let city of cities" [ngValue]="city"[selected]=null>{{ city.name }}</option>
+                    </select>
+                    
+                </div>
+                <div class="form__group--footer">
+                    <ng-container *ngTemplateOutlet="inputErrorMessage; context: {controlName: 'city'}"></ng-container>
+                </div>
+
+            </div>
+
+            <div class="form-group col-12 col-md-6">
+                <div>
+                    <label for="adress" class="form__group--label">Dirección: </label>
+                </div>
+                <div >
+                    <input type="text" formControlName="adress" id="adress" placeholder="calle 118"  tabindex="1" class="form-control form__group--input">
+                </div>
+                <div class="form__group--footer">
+                    <ng-container *ngTemplateOutlet="inputErrorMessage; context: {controlName: 'adress'}"></ng-container>
+                </div>
+            </div>
+
+            <div class="form-group col-12 col-md-6">
+                <div>
+                    <label for="zipcode" class="form__group--label">Codigo postal: </label>
+                </div>
+                <div >
+                    <input type="text" formControlName="zipcode" id="zipcode" placeholder="79537"  tabindex="1" class="form-control form__group--input">
+                </div>
+                <div class="form__group--footer">
+                    <ng-container *ngTemplateOutlet="inputErrorMessage; context: {controlName: 'zipcode'}"></ng-container>
+                </div>
+            </div>
+
+            <div class="form-group col-12 col-md-6">
+                <div>
+                    <label for="email" class="form__group--label">Email: </label>
+                </div>
+                <div >
+                    <input type="text" formControlName="email" id="email" placeholder="email@example.com"  tabindex="1" class="form-control form__group--input">
+                </div>
+                <div class="form__group--footer">
+                    <ng-container *ngTemplateOutlet="inputErrorMessage; context: {controlName: 'email'}"></ng-container>
+                  </div>
+            </div>
+
+            <div class="form-group col-12 col-md-6">
+                <div>
+                    <label for="password" class="form__group--label">Contraseña: </label>
+                </div>
+                <div >
+                    <input type="password" formControlName="password" id="password" placeholder="*****"  tabindex="1" class="form-control form__group--input">
+                </div>
+                <div class="form__group--footer">
+                    <ng-container *ngTemplateOutlet="inputErrorMessage; context: {controlName: 'password'}"></ng-container>
+                </div>
+            </div>
+        </div>
+            
+        <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Submit</button>
+    </form>
+    <ng-template #inputErrorMessage let-controlName="controlName">
+        <ng-container *ngIf="shouldDisplayErrors(controlName)">
+          <span class="form__group--error">{{ getErrorLabel(controlName) }}</span>
+        </ng-container>
+      </ng-template>
+    <div class="error">{{ error }}</div>
+</div>

@@ -1,0 +1,27 @@
+
+<div class="jumbotron" style=" height: calc(100vh);">
+	<div style="margin-bottom: 140px; margin-top:5%;"> 
+		<h1 class="register__title">Bienvenido a Finance Helper</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-6" >
+			<div class="col-md-11" style="text-align: justify; margin-left: 10%;">
+				<h4 class="h2__tittle">¿Quienes Somos?</h4>
+				<p>Finance Helper es una aplicación diseñada para apoyar a los pequeños inversores y traders para obtener mejores beneficios de sus respectivas inversiones, tenemos como objetivo mejorar tu experiencia y tus beneficios, te ofrecemos una herramienta que te permitirá monitorear productos bursatiles y te brindara toda la información que requieras de ellos.</p>
+			</div>
+
+			<div class="col-md-11" style="text-align: justify; margin-left: 10%;">
+				<h4 class="h2__tittle"> ¿Qué te ofrecemos?</h4>
+				<p> tenemos para ti una serie de funcionalidades que te ayudaran a obtener información acerca de aque llos productos bursatiles que llaman tu atención, entre ellas te ofrecemos notificaciones personalizadas que te permitiran saber según tus propios criterios el estado de un producto bursatil</p>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<img src="assets/images/home-image.jpg" width="70%" style="margin-left: 20px;">
+		</div>
+	</div>
+	<div  *ngIf="!(authenticated | async)"  style="align-content: center; margin-left: 40%; margin-top: 5%;">
+		<button type="submit" class="btn btn-primary"  routerLink="/register" style="width: 20%;">Regístrate</button>
+	</div>
+
+
+</div>
